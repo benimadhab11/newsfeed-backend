@@ -78,6 +78,7 @@ public class ItemServiceImpl implements ItemService{
 	 
 	@Scheduled(cron="0 0/5 * * * *")
 	public void cronBestFiveItems() {
+		
 		sortedItems= itemRepo.findAll()
 							 .stream()
 							 .sorted(Comparator.comparing(ItemEntity::getRating).reversed())
