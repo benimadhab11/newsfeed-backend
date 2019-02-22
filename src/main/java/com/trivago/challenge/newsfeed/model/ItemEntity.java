@@ -14,6 +14,7 @@ public class ItemEntity {
 	private String guidObject;
 	private String description;
 	private String pubDate;
+	private String creator;
 	
 	private List<UserRatingEntity> userRating;
 	
@@ -62,6 +63,12 @@ public class ItemEntity {
 	}
 	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
+	}
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
 	}
 	
 	

@@ -18,18 +18,19 @@ import com.trivago.challenge.newsfeed.repo.ItemRepo;
 @Service
 public class ItemServiceImpl implements ItemService{
 	
-	public List<ItemEntity> sortedItems = new ArrayList<>();
+	public static List<ItemEntity> sortedItems = new ArrayList<>();
+
+
+	@Autowired
+	private ItemRepo itemRepo;
 
 	public List<ItemEntity> getSortedItems() {
 		return sortedItems;
 	}
 
 	public void setSortedItems(List<ItemEntity> sortedItems) {
-		this.sortedItems = sortedItems;
+		ItemServiceImpl.sortedItems = sortedItems;
 	}
-
-	@Autowired
-	private ItemRepo itemRepo;
 	
 	public List<ItemEntity> getAllItems() {
 		return itemRepo.findAll();
@@ -49,7 +50,7 @@ public class ItemServiceImpl implements ItemService{
 		}
 		boolean isPresent = false;
 		for(UserRatingEntity user:listofUsersRater) {
-			if(user.getUserId().equals(userRating.getUserId())){
+			if(user.getEmail().equals(userRating.getEmail())){
 				user.setRating(userRating.getRating());
 				isPresent = true;
 				break;
